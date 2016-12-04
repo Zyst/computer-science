@@ -17,7 +17,7 @@ func main() {
 	for minutes < 1 {
 		fmt.Printf("minutes: ")
 
-		// We pass a pointer of our minutes variable for assignment
+		// Check slack favorites and change this to the appropriate function test
 		_, err := fmt.Scanf("%d", &minutes)
 
 		// If we have an error, which covers almost anything, we keep looping
