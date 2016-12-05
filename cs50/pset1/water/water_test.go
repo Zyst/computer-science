@@ -11,12 +11,11 @@ func Test_minutesToWaterBottles(t *testing.T) {
 		minutes int
 		want    int
 	}{
-		// TODO: Add test cases.
 		{"120", 10, 120},
 		{"1200", 100, 1200},
 		{"180", 15, 180},
 		{"3996", 333, 3996},
-		{"12000", 1001, 12000},
+		{"12000", 1000, 12000},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

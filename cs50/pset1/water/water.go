@@ -20,7 +20,6 @@ func main() {
 	for minutes < 1 {
 		fmt.Printf("minutes: ")
 
-		// TODO: Add tests
 		// We grab a new reader and feed it the OS STDIN
 		reader := bufio.NewReader(os.Stdin)
 
