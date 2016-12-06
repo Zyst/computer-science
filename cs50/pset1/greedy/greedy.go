@@ -17,8 +17,8 @@ func giveChange(money float64, coins int) int {
 	// Nickels (5¢)
 	// Pennies (1¢)
 
-  // TODO: Remove this when done debugging
-  fmt.Printf("Money %f, Coins %d\n", money, coins)
+	// TODO: Remove this when done debugging
+	fmt.Printf("Money %f, Coins %d\n", money, coins)
 
 	if money >= .25 {
 		return giveChange(money-.25, coins+1)
