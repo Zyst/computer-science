@@ -11,7 +11,7 @@ import (
 // you input following a Greedy algorithm. It will always try to give
 // the least amount of coins possible.
 func giveChange(money float64, coins int) int {
-	// Coins denomination used are USD, so:
+	// Coins denomination used are USD, so valid cases are:
 	// Quarters (25¢)
 	// Dimes (10¢)
 	// Nickels (5¢)
