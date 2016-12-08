@@ -21,10 +21,7 @@ func checkInputIsNumbers(card string) bool {
 	_, err := strconv.Atoi(card)
 
 	// If we have no trouble converting Atoi we should be safe.
-	if err != nil {
-		return false
-	}
-	return true
+	return err == nil
 }
 
 func verifyCardWithLuhnAlgorithm(card string) bool {
@@ -82,22 +79,47 @@ func verifyCardWithLuhnAlgorithm(card string) bool {
 				panic(err)
 			}
 
-      secondSum += i
+			secondSum += i
 		}
 	}
 
-	fmt.Println(firstSum)
-  fmt.Println(secondSum)
-  fmt.Println(firstSum + secondSum)
+	// We convert our first sum and second sum into a total
+	total := strconv.Itoa(firstSum + secondSum)
 
-	return true
+	// We break it into a slice
+	totalSlice := strings.Split(total, "")
+
+	// If our last number is 0, this card is "valid"
+	return totalSlice[len(totalSlice)-1] == "0"
+}
+
+// Mastercard, Amex, and Visa are valid in our program
+func returnCardType(card string) string {
+	// We get the first two characters, which are the relevant ones to see types
+	firstTwo := strings.Split(card, "")
+
+	// If first digit is 5, second is 1, 2, 3, 4, or 5
+	if firstTwo[0] == "5" &&
+		firstTwo[1] == "1" ||
+		firstTwo[1] == "2" ||
+		firstTwo[1] == "3" ||
+		firstTwo[1] == "4" ||
+		firstTwo[1] == "5" {
+		return "Mastercard"
+	} else if firstTwo[0] == "4" {
+		return "Visa"
+	} else if firstTwo[0] == "3" &&
+		firstTwo[1] == "4" ||
+		firstTwo[1] == "7" {
+		return "American Express"
+	} else {
+		return "Invalid"
+	}
 }
 
 func main() {
 	// Here are some credit cards for testing!
 	// https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
-
-	// TODO: Add User input here
 	test := "378282246310005"
 
 	// If our card doesn't pass length tests we return
@@ -106,5 +128,7 @@ func main() {
 		return
 	}
 
-	verifyCardWithLuhnAlgorithm(test)
+	fmt.Println(verifyCardWithLuhnAlgorithm(test))
+
+  fmt.Println(returnCardType(test))
 }
