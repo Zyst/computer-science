@@ -98,7 +98,6 @@ func returnCardType(card string) string {
 	// We get the first two characters, which are the relevant ones to see types
 	firstTwo := strings.Split(card, "")
 
-	// If first digit is 5, second is 1, 2, 3, 4, or 5
 	if firstTwo[0] == "5" &&
 		firstTwo[1] == "1" ||
 		firstTwo[1] == "2" ||
@@ -117,18 +116,19 @@ func returnCardType(card string) string {
 	}
 }
 
+// This just combines all the functions above
+func validateCardAndReturnType(card string) string {
+  if checkCardLengthValidity(card) && checkInputIsNumbers(card) && verifyCardWithLuhnAlgorithm(card) {
+    return returnCardType(card)
+  } else {
+    return "Invalid"
+  }
+}
+
 func main() {
 	// Here are some credit cards for testing!
 	// https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
 	test := "378282246310005"
 
-	// If our card doesn't pass length tests we return
-	if !checkCardLengthValidity(test) && !checkInputIsNumbers(test) {
-		fmt.Println("INVALID")
-		return
-	}
-
-	fmt.Println(verifyCardWithLuhnAlgorithm(test))
-
-  fmt.Println(returnCardType(test))
+  fmt.Println(validateCardAndReturnType(test))
 }
