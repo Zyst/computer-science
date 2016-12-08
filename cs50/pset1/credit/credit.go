@@ -34,10 +34,9 @@ func verifyCardWithLuhnAlgorithm(card string) bool {
 	// Our second sum following the algorithm
 	secondSum := 0
 
-	for index, num := range numbers {
-		// If it's an alternating number
-		if index%2 != 0 {
-			i, err := strconv.Atoi(num)
+	for index := 1; index <= len(numbers); index++ {
+		if index%2 == 0 {
+			i, err := strconv.Atoi(numbers[len(numbers)-index])
 
 			if err != nil {
 				panic(err)
@@ -73,7 +72,7 @@ func verifyCardWithLuhnAlgorithm(card string) bool {
 				firstSum = firstSum + x + y
 			}
 		} else {
-			i, err := strconv.Atoi(num)
+			i, err := strconv.Atoi(numbers[len(numbers)-index])
 
 			if err != nil {
 				panic(err)
@@ -118,11 +117,11 @@ func returnCardType(card string) string {
 
 // This just combines all the functions above
 func validateCardAndReturnType(card string) string {
-  if checkCardLengthValidity(card) && checkInputIsNumbers(card) && verifyCardWithLuhnAlgorithm(card) {
-    return returnCardType(card)
-  } else {
-    return "Invalid"
-  }
+	if checkCardLengthValidity(card) && checkInputIsNumbers(card) && verifyCardWithLuhnAlgorithm(card) {
+		return returnCardType(card)
+	} else {
+		return "Invalid"
+	}
 }
 
 func main() {
@@ -130,5 +129,5 @@ func main() {
 	// https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
 	test := "378282246310005"
 
-  fmt.Println(validateCardAndReturnType(test))
+	fmt.Println(validateCardAndReturnType(test))
 }
