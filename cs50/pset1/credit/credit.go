@@ -27,7 +27,7 @@ func checkInputIsNumbers(card string) bool {
 	return true
 }
 
-func verifyCard(card string) bool {
+func verifyCardWithLuhnAlgorithm(card string) bool {
 	// We split our card into individual numbers
 	numbers := strings.Split(card, "")
 
@@ -53,32 +53,43 @@ func verifyCard(card string) bool {
 				firstSum += sum
 			} else {
 				// We turn our multiplied sum back to a string
-        sumString := strconv.Itoa(sum)
+				sumString := strconv.Itoa(sum)
 
-        // We split the string into parts (Should just be two)
-        split := strings.Split(sumString, "")
+				// We split the string into parts (Should just be two)
+				split := strings.Split(sumString, "")
 
-        // We convert the first element back to an int
-        x, err := strconv.Atoi(split[0])
+				// We convert the first element back to an int
+				x, err := strconv.Atoi(split[0])
 
-        if err != nil {
-          panic(err)
-        }
+				if err != nil {
+					panic(err)
+				}
 
-        // We convert our second element back to an int
-        y, err := strconv.Atoi(split[1])
+				// We convert our second element back to an int
+				y, err := strconv.Atoi(split[1])
 
-        if err != nil {
-          panic(err)
-        }
+				if err != nil {
+					panic(err)
+				}
 
-        // We add X and Y to our first sum
-        firstSum = firstSum + x + y
+				// We add X and Y to our first sum
+				firstSum = firstSum + x + y
 			}
+		} else {
+			i, err := strconv.Atoi(num)
+
+			if err != nil {
+				panic(err)
+			}
+
+      secondSum += i
 		}
 	}
 
-  fmt.Println(firstSum)
+	fmt.Println(firstSum)
+  fmt.Println(secondSum)
+  fmt.Println(firstSum + secondSum)
+
 	return true
 }
 
@@ -95,5 +106,5 @@ func main() {
 		return
 	}
 
-	verifyCard(test)
+	verifyCardWithLuhnAlgorithm(test)
 }
