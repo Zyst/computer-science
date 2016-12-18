@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 func isUpper(b byte) bool {
 	return b >= 'A' && b <= 'Z'
 }
@@ -18,17 +14,17 @@ func vigenereShift(letter byte, offset byte) byte {
 	// If we have an uppercase letter or lowercase letter
 	if isUpper(letter) {
 
-    // If our offset is lowercase
-    if isLower(offset) {
-      offset -= 32
+		// If our offset is lowercase
+		if isLower(offset) {
+			offset -= 32
 		}
 
 		return ((letter - 'A' + offset - 'A') % 26) + 'A'
 	} else if isLower(letter) {
 
-    // If our offset is lowercase
-    if isUpper(offset) {
-      offset += 32
+		// If our offset is lowercase
+		if isUpper(offset) {
+			offset += 32
 		}
 
 		return ((letter - 'a' + offset - 'a') % 26) + 'a'
@@ -40,9 +36,20 @@ func vigenereShift(letter byte, offset byte) byte {
 func vigenereCipher(encrypt string, key string) string {
 	result := ""
 
+	// The sub-index we use for our vigenere key
+	subIndex := 0
+
 	// Key index for vigenere
-	for i, s := range encrypt {
-		fmt.Printf("%c --- %c and key[%d]\n", vigenereShift(byte(s), key[i%5]), s, i%5)
+	for _, s := range encrypt {
+		r := vigenereShift(byte(s), key[subIndex%5])
+
+		// If our value is a letter we increase our subindex
+		if isUpper(byte(s)) || isLower(byte(s)) {
+			subIndex++
+		}
+
+		// We append to result
+		result += string(r)
 	}
 
 	return result
