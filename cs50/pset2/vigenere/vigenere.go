@@ -54,7 +54,3 @@ func vigenereCipher(encrypt string, key string) string {
 
 	return result
 }
-
-func main() {
-
-}
