@@ -14,7 +14,7 @@ func vigenereShift(letter byte, offset byte) byte {
 	// If we have an uppercase letter or lowercase letter
 	if isUpper(letter) {
 
-		// If our offset is lowercase
+		// If our offset is lowercase we turn it into uppercase
 		if isLower(offset) {
 			offset -= 32
 		}
@@ -22,7 +22,7 @@ func vigenereShift(letter byte, offset byte) byte {
 		return ((letter - 'A' + offset - 'A') % 26) + 'A'
 	} else if isLower(letter) {
 
-		// If our offset is lowercase
+		// If our offset is uppercase we turn it into lowercase
 		if isUpper(offset) {
 			offset += 32
 		}
