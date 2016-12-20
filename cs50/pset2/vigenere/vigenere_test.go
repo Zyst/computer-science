@@ -12,10 +12,10 @@ func Test_vigenereShift(t *testing.T) {
 		args args
 		want byte
 	}{
-	  {"AA", args{'A', 'A'}, 'A'},
-	  {"MN", args{'M', 'b'}, 'N'},
-	  {"MN", args{'M', 'B'}, 'N'},
-	  {"aa", args{'a', 'a'}, 'a'},
+		{"AA", args{'A', 'A'}, 'A'},
+		{"MN", args{'M', 'b'}, 'N'},
+		{"MN", args{'M', 'B'}, 'N'},
+		{"aa", args{'a', 'a'}, 'a'},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

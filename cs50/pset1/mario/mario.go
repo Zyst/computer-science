@@ -34,11 +34,11 @@ func main() {
 		}
 	}
 
-  for index := 1; index <= height; index++ {
-    spaces := strings.Repeat(" ", height - index)
+	for index := 1; index <= height; index++ {
+		spaces := strings.Repeat(" ", height-index)
 
-    blocks := strings.Repeat("#", index) + "#\n"
+		blocks := strings.Repeat("#", index) + "#\n"
 
-    fmt.Printf(spaces + blocks)
-  }
+		fmt.Printf(spaces + blocks)
+	}
 }

@@ -38,8 +38,8 @@ func main() {
 			panic(err)
 		}
 
-    name = string(input)
+		name = string(input)
 	}
 
-  fmt.Printf("Your initials are %s\n", getInitials(name))
+	fmt.Printf("Your initials are %s\n", getInitials(name))
 }
