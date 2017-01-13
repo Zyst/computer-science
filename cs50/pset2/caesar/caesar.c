@@ -9,7 +9,8 @@ void caesarCipher(string, int);
 int main(int argc, string argv[])
 {
     // If we don't have exactly two arguments
-    if (argc != 2) {
+    if (argc != 2)
+    {
         printf("Caesar should have exactly one command line argument.\n");
         return 1;
     }
@@ -32,7 +33,9 @@ char caesarShift(char letter, int offset)
     if (letter >= 'A' && letter <= 'Z')
     {
         return (((letter - 'A') + offset) % 26) + 'A';
-    } else if (letter >= 'a' && letter <= 'z') {
+    }
+    else if (letter >= 'a' && letter <= 'z')
+    {
         return (((letter - 'a') + offset) % 26) + 'a';
     }
 
@@ -43,11 +46,11 @@ char caesarShift(char letter, int offset)
 // Sequence that prints our caesar shifted values
 void caesarCipher(string encrypt, int offset)
 {
-    for (int i = 0, n = strlen(encrypt); i < n; i++) {
+    for (int i = 0, n = strlen(encrypt); i < n; i++)
+    {
         printf("%c", caesarShift(encrypt[i], offset));
     }
 
     // Newline to finish our call
     printf("\n");
 }
-
