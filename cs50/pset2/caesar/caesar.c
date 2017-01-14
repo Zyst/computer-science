@@ -19,6 +19,7 @@ int main(int argc, string argv[])
     int offset = atoi(argv[1]);
 
     // We receive a string from the user to encrypt
+    printf("plaintext:  ");
     string encrypt = GetString();
 
     caesarCipher(encrypt, offset);
@@ -46,6 +47,8 @@ char caesarShift(char letter, int offset)
 // Sequence that prints our caesar shifted values
 void caesarCipher(string encrypt, int offset)
 {
+    printf("ciphertext: ");
+
     for (int i = 0, n = strlen(encrypt); i < n; i++)
     {
         printf("%c", caesarShift(encrypt[i], offset));
