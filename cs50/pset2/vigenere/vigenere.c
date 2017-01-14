@@ -76,14 +76,24 @@ char vigenereShift(char letter, char offset)
   return letter;
 }
 
-// Sequence that prints our caesar shifted values
+// We iterate through our string, running our vignere shift algorithm on each
+// individual letter, and printing it out
 void vigenereCipher(string encrypt, string key)
 {
+  // A subindex I'll use for the Vigenere key
+  int subIndex = 0;
+  int keyLength = strlen(key);
+
   printf("ciphertext: ");
 
   for (int i = 0, n = strlen(encrypt); i < n; i++)
   {
-    printf("%c", vigenereShift(encrypt[i], key[0]));
+    printf("%c", vigenereShift(encrypt[i], key[subIndex % keyLength]));
+
+    if (isUpper(encrypt[i]) || isLower(encrypt[i]))
+    {
+      subIndex++;
+    }
   }
 
   // Newline to finish our call
