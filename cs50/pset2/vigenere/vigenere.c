@@ -79,6 +79,8 @@ char vigenereShift(char letter, char offset)
 // Sequence that prints our caesar shifted values
 void vigenereCipher(string encrypt, string key)
 {
+  printf("ciphertext: ");
+
   for (int i = 0, n = strlen(encrypt); i < n; i++)
   {
     printf("%c", vigenereShift(encrypt[i], key[0]));
