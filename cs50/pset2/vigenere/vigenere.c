@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-char vigenereShift(char, int);
+char vigenereShift(char, char);
 void vigenereCipher(string, string);
 bool isUpper(char);
 bool isLower(char);
@@ -56,7 +56,7 @@ char vigenereShift(char letter, char offset)
     // We return the letter turned into an alphabetical index (0-25 A-Z) plus
     // the offset turned into an alphabetical index, then we do a modulo
     // 26 operation, and finally turn the letter into the ASCII range again
-    return ((letter - 'A' + offset - 'A') % 26) + 'A'
+    return ((letter - 'A' + offset - 'A') % 26) + 'A';
   }
   else if (isLower(letter))
   {
@@ -64,16 +64,16 @@ char vigenereShift(char letter, char offset)
     // because Vigenere keys are case insensitive
     if (isUpper(offset))
     {
-      offset += 32
+      offset += 32;
     }
 
     // We return the letter turned into an alphabetical index (0-25 a-z) plus
     // the offset turned into an alphabetical index, then we do a modulo
     // 26 operation, and finally turn the letter into the ASCII range again
-    return ((letter - 'a' + offset - 'a') % 26) + 'a'
+    return ((letter - 'a' + offset - 'a') % 26) + 'a';
   }
   // If we got to this point we return the character unchanged
-  return letter
+  return letter;
 }
 
 // Sequence that prints our caesar shifted values
@@ -81,7 +81,7 @@ void vigenereCipher(string encrypt, string key)
 {
   for (int i = 0, n = strlen(encrypt); i < n; i++)
   {
-    printf("%c", vigenereShift(encrypt[i], offset));
+    printf("%c", vigenereShift(encrypt[i], key[0]));
   }
 
   // Newline to finish our call
