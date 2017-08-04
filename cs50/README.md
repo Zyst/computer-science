@@ -1,12 +1,10 @@
 Harvard Legendary CS50 class.
 
-I don't want to ruin the fun of the PSets if someone finds this through Google, so I'm doing two versions of this stuff. One in Golang (here), and one in C/PHP/Whatever they have us use that week.
-
-That way I get to both practice Golang, which I'm learning (https://github.com/Zyst/learning-golang) and have fun with CS50.
+This is surprisingly fun.
 
 - [x] Week 0
-- [ ] Week 1
-- [ ] Week 2
+- [x] Week 1
+- [x] Week 2
 - [ ] Week 3
 - [ ] Week 4
 - [ ] Week 5
