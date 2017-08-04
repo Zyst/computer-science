@@ -8,3 +8,8 @@ select distinct year
 from Rating, Movie using(mID)
 where stars = 5 or stars = 4
 order by year
+
+-- Q3 Find the titles of all movies that have no ratings.
+select title
+from Movie left join Rating on Movie.mID = Rating.mID
+where rID is null
