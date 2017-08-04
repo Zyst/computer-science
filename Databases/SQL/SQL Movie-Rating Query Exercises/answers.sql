@@ -13,3 +13,8 @@ order by year
 select title
 from Movie left join Rating on Movie.mID = Rating.mID
 where rID is null
+
+-- Q4 Some reviewers didn't provide a date with their rating. Find the names of all reviewers who have ratings with a NULL value for the date.
+select name
+from Rating, Reviewer using (rID)
+where ratingDate is null
