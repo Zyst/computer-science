@@ -29,3 +29,8 @@ order by name, title, stars
 select name, title
 from Rating as R1, Rating as R2, Reviewer using (rID), Movie using (mID)
 where R1.rID = R2.rID and R1.mID = R2.mID and R1.stars > R2.stars and R1.ratingDate > R2.ratingDate
+
+-- Q7 For each movie that has at least one rating, find the highest number of stars that movie received. Return the movie title and number of stars. Sort by movie title.
+select title, max(stars)
+from Movie, Rating using (mID)
+group by title
