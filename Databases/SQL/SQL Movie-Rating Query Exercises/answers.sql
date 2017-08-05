@@ -34,3 +34,9 @@ where R1.rID = R2.rID and R1.mID = R2.mID and R1.stars > R2.stars and R1.ratingD
 select title, max(stars)
 from Movie, Rating using (mID)
 group by title
+
+-- Q8 For each movie, return the title and the 'rating spread', that is, the difference between highest and lowest ratings given to that movie. Sort by rating spread from highest to lowest, then by movie title.
+select title, max(stars) - min(stars) as spread
+from Movie, Rating using (mID)
+group by title
+order by spread desc, title
