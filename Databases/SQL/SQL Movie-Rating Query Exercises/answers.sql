@@ -40,3 +40,9 @@ select title, max(stars) - min(stars) as spread
 from Movie, Rating using (mID)
 group by title
 order by spread desc, title
+
+-- Q9 Find the difference between the average rating of movies released before 1980 and the average rating of movies released after 1980. (Make sure to calculate the average rating for each movie, then the average of those averages for movies before 1980 and movies after. Don't just calculate the overall average rating before and after 1980.)
+select title, year, avg(stars)
+from Movie, Rating using (mID)
+group by title
+order by year
