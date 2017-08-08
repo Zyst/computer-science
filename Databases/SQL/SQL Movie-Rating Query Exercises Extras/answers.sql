@@ -14,3 +14,11 @@ from Reviewer
 union
 select title
 from Movie
+
+-- Q4 Find the titles of all movies not reviewed by Chris Jackson
+select title
+from Movie
+where Movie.mID not in (
+  select mID
+  from Rating, Reviewer using (rID)
+  where name = "Chris Jackson")
