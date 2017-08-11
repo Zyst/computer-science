@@ -24,6 +24,6 @@ where Movie.mID not in (
   where name = "Chris Jackson")
 
 -- Q5 For all pairs of reviewers such that both reviewers gave a rating to the same movie, return the names of both reviewers. Eliminate duplicates, don't pair reviewers with themselves, and include each pair only once. For each pair, return the names in the pair in alphabetical order.
-select name, rID, mID
-from Rating, Reviewer using (rID)
-order by mID
+select distinct R1.rID, R2.rID, R1.mID
+from Rating as R1, Reviewer using (rID), Rating as R2
+where R1.mID = R2.mID and R1.rID > R2.rID
