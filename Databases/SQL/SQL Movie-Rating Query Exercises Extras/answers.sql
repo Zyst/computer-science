@@ -38,3 +38,8 @@ select distinct
 from Rating as R1, Rating as R2
 where R1.mID = R2.mID and R1.rID > R2.rID
 order by nameR1, nameR2
+
+-- Q6 For each rating that is the lowest (fewest stars) currently in the database, return the reviewer name, movie title, and number of stars.
+select name, title, stars
+from Rating, Movie using (mID), Reviewer using (rID)
+where stars = (select min(stars) from Rating)
