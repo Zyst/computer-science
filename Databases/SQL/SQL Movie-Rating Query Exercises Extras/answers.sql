@@ -49,3 +49,9 @@ select title, avg(stars) as avgStars
 from Rating, Movie using (mID)
 group by title
 order by avgStars desc, title
+
+-- Q8 Find the names of all reviewers who have contributed three or more ratings. (As an extra challenge, try writing the query without HAVING or without COUNT.)
+select name
+from Rating, Reviewer using (rID)
+group by rID
+having count(rID) > 2
