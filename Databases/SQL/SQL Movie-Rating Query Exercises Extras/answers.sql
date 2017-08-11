@@ -43,3 +43,9 @@ order by nameR1, nameR2
 select name, title, stars
 from Rating, Movie using (mID), Reviewer using (rID)
 where stars = (select min(stars) from Rating)
+
+-- Q7 List movie titles and average ratings, from highest-rated to lowest-rated. If two or more movies have the same average rating, list them in alphabetical order.
+select title, avg(stars) as avgStars
+from Rating, Movie using (mID)
+group by title
+order by avgStars desc, title
