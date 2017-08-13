@@ -8,7 +8,7 @@
  * where n is number of pseudorandom numbers to print
  * and s is an optional seed
  */
- 
+
 #define _XOPEN_SOURCE
 
 #include <cs50.h>
@@ -35,19 +35,19 @@ int main(int argc, string argv[])
     // If we have 3 arguments we seed rand48 with the second argument
     if (argc == 3)
     {
-        srand48((long) atoi(argv[2]));
+        srand48((long)atoi(argv[2]));
     }
     // We seed our srand with the current time in epoch format
     else
     {
-        srand48((long) time(NULL));
+        srand48((long)time(NULL));
     }
 
     // We print a number using the drand48 which gives us a number between [0.0, 1.0),
     // and multiply it by "LIMIT" to get a random int
     for (int i = 0; i < n; i++)
     {
-        printf("%i\n", (int) (drand48() * LIMIT));
+        printf("%i\n", (int)(drand48() * LIMIT));
     }
 
     // success
