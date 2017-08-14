@@ -53,17 +53,11 @@ void sort(int values[], int n)
 {
     // We need to know the max number of the passed array so we can implement counting sort
     const int MAX = 65536;
-    int counted[MAX];
-
-    for (int i = 0; i < MAX; i++)
-    {
-        counted[i] = 0;
-    }
+    int counted[65536] = {0};
 
     for (int i = 0; i < n; i++)
     {
         // We add the value, minus one because that's the relevant index. And ++ it.
-        // I think this might cause trouble? Like, I think C memory can die this way.
         counted[values[i] - 1]++;
     }
 
