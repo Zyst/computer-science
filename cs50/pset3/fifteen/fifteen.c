@@ -1,4 +1,3 @@
-
 /**
  * fifteen.c
  *
@@ -253,8 +252,11 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // TODO
-    return false;
+    // We check if the passed tile is valid at all, if not we exit early
+    if (tile >= d * d)
+    {
+        return false;
+    }
 }
 
 /**
@@ -263,6 +265,21 @@ bool move(int tile)
  */
 bool won(void)
 {
-    // TODO
-    return false;
+    // We won unless specified otherwise
+    bool win_check = true;
+
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            // If the current tile is different from the win state
+            // we haven't won yet
+            if (board[i][j] != win_state[i][j])
+            {
+                win_check = false;
+            }
+        }
+    }
+
+    return win_check;
 }
