@@ -291,8 +291,8 @@ bool move(int tile)
     // If it's to our left
     if (empty_column - 1 == tile_column && empty_row == tile_row)
     {
-        board[empty_column][empty_row] = board[tile_column][tile_row];
-        board[tile_column][tile_row] = -1;
+        board[empty_row][empty_column] = board[tile_row][tile_column];
+        board[tile_row][tile_column] = -1;
 
         return true;
     }
@@ -300,8 +300,8 @@ bool move(int tile)
     // If it's to our right
     if (empty_column + 1 == tile_column && empty_row == tile_row)
     {
-        board[empty_column][empty_row] = board[tile_column][tile_row];
-        board[tile_column][tile_row] = -1;
+        board[empty_row][empty_column] = board[tile_row][tile_column];
+        board[tile_row][tile_column] = -1;
 
         return true;
     }
@@ -309,8 +309,8 @@ bool move(int tile)
     // If it's above
     if (empty_row - 1 == tile_row && empty_column == tile_column)
     {
-        board[empty_column][empty_row] = board[tile_column][tile_row];
-        board[tile_column][tile_row] = -1;
+        board[empty_row][empty_column] = board[tile_row][tile_column];
+        board[tile_row][tile_column] = -1;
 
         return true;
     }
@@ -318,8 +318,8 @@ bool move(int tile)
     // If it's below
     if (empty_row + 1 == tile_row && empty_column == tile_column)
     {
-        board[empty_column][empty_row] = board[tile_column][tile_row];
-        board[tile_column][tile_row] = -1;
+        board[empty_row][empty_column] = board[tile_row][tile_column];
+        board[tile_row][tile_column] = -1;
 
         return true;
     }
