@@ -1,3 +1,4 @@
+
 /**
  * fifteen.c
  *
@@ -170,7 +171,7 @@ void init(void)
                 board[i][j] = current_number;
 
                 // If this is a pair board we will do a special case override
-                if (d % 2 == 0 && current_number == 2 || current_number == 1)
+                if (d % 2 == 0 && (current_number == 2 || current_number == 1))
                 {
                     // We flip 2 and 1
                     if (current_number == 2)
@@ -200,7 +201,21 @@ void init(void)
  */
 void draw(void)
 {
-    // TODO
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            if (board[i][j] != -1)
+            {
+                printf(" %2i", board[i][j]);
+            }
+            else
+            {
+                printf("  _");
+            }
+        }
+        printf("\n");
+    }
 }
 
 /**
