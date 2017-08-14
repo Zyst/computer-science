@@ -26,6 +26,7 @@
 
 // board
 int board[DIM_MAX][DIM_MAX];
+int win_state[DIM_MAX][DIM_MAX];
 
 // dimensions
 int d;
@@ -154,12 +155,16 @@ void greet(void)
 /**
  * Initializes the game's board with tiles numbered 1 through d*d - 1
  * (i.e., fills 2D array with values but does not actually print them).
+ *
+ * It also initializes the win state array, which we'll use to facilitate
+ * won comparisons, without iterating through it every time.
  */
 void init(void)
 {
     // First we get the number of tiles we should use so to say
     int current_number = d * d - 1;
 
+    // We iterate through our 2D array
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -192,6 +197,30 @@ void init(void)
                 // We use -1 to denotate an empty space
                 board[i][j] = -1;
             }
+        }
+    }
+
+    int incrementing_number = 1;
+
+    /**
+     * We are going to iterate again to set our initial win condition.
+     * Although we could do this in the above iteration, I decided to bring
+     * it to it's own loop. In the worst case scenario we added 81 iterations
+     * but I think the increased readability makes it a worthwhile tradeoff.
+     */
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            win_state[i][j] = incrementing_number;
+
+            if (incrementing_number == d * d)
+            {
+                // If we reached our maximum number, our last tile is -1 instead
+                win_state[i][j] = -1;
+            }
+
+            incrementing_number++;
         }
     }
 }
