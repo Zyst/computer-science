@@ -156,7 +156,43 @@ void greet(void)
  */
 void init(void)
 {
-    // TODO
+    // First we get the number of tiles we should use so to say
+    int current_number = d * d - 1;
+
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            // If our current number(s) haven't run out
+            if (current_number > 0)
+            {
+                // We assign the current number to the relevant board position
+                board[i][j] = current_number;
+
+                // If this is a pair board we will do a special case override
+                if (d % 2 == 0 && current_number == 2 || current_number == 1)
+                {
+                    // We flip 2 and 1
+                    if (current_number == 2)
+                    {
+                        board[i][j] = 1;
+                    }
+                    else
+                    {
+                        board[i][j] = 2;
+                    }
+                }
+
+                // We reduce the current number by one
+                current_number--;
+            }
+            else
+            {
+                // We use -1 to denotate an empty space
+                board[i][j] = -1;
+            }
+        }
+    }
 }
 
 /**
