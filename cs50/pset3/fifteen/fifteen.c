@@ -252,11 +252,80 @@ void draw(void)
  */
 bool move(int tile)
 {
-    // We check if the passed tile is valid at all, if not we exit early
-    if (tile >= d * d)
+    // If someone passed -1 it could mess with our structure, so we'll just
+    // bail early
+    if (tile == -1)
     {
         return false;
     }
+
+    // We initialize the position of our title and empty rows/columns
+    int tile_row, tile_column = -1;
+    int empty_row, empty_column = -1;
+
+    // We iterate through our array and find our tile and empty row/column
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            if (board[i][j] == tile)
+            {
+                tile_row = i;
+                tile_column = j;
+            }
+            if (board[i][j] == -1)
+            {
+                empty_row = i;
+                empty_column = j;
+            }
+        }
+    }
+
+    // If any of our tile values are still the default value we exit
+    if (tile_row == -1 || tile_column == -1)
+    {
+        return false;
+    }
+
+    // We are going to do a "case" for each cardinality
+    // If it's to our left
+    if (empty_column - 1 == tile_column && empty_row == tile_row)
+    {
+        board[empty_column][empty_row] = board[tile_column][tile_row];
+        board[tile_column][tile_row] = -1;
+
+        return true;
+    }
+
+    // If it's to our right
+    if (empty_column + 1 == tile_column && empty_row == tile_row)
+    {
+        board[empty_column][empty_row] = board[tile_column][tile_row];
+        board[tile_column][tile_row] = -1;
+
+        return true;
+    }
+
+    // If it's above
+    if (empty_row - 1 == tile_row && empty_column == tile_column)
+    {
+        board[empty_column][empty_row] = board[tile_column][tile_row];
+        board[tile_column][tile_row] = -1;
+
+        return true;
+    }
+
+    // If it's below
+    if (empty_row + 1 == tile_row && empty_column == tile_column)
+    {
+        board[empty_column][empty_row] = board[tile_column][tile_row];
+        board[tile_column][tile_row] = -1;
+
+        return true;
+    }
+
+    // If all our cases failed, we return false
+    return false;
 }
 
 /**
@@ -268,6 +337,7 @@ bool won(void)
     // We won unless specified otherwise
     bool win_check = true;
 
+    // We iterate through our board and win state arrays
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
